@@ -1,3 +1,3 @@
-# iris_tester
+# Iris Tester
 
-This is a test file that automatically test a guidance prompt against 5 use cases. 
+This is a test file that automatically tests a guidance prompt against 5 pre-defined use cases. 
