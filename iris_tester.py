@@ -336,6 +336,33 @@ Suche nach der 9002 ergibt bereits, dass es kein Element im Array gibt, das im I
 <p>A: Schau dir noch den restlichen Code in der Intervallklasse an. Dort gibt es eine andere Methode dafür.</p></div>
 """
 
+# function that runs the test runs
+def testrun(n, query, requirements):
+    # Run the test
+    print()
+    print("############# Test ",n, " #############")
+    print("Question ", n,": ", query)
+    print("What to look for: ", requirements)
+    print()
+    print("The answer:")
+
+    test = template(title = "Binaere Suche",
+                    description = task_description,
+                    files = files,
+                    history = [
+                        {
+                            "role": "assistant",
+                            "content": "Hi there, I'm Iris! How can I help you today?"
+                        },
+                        {
+                            "role": "user",
+                            "content": query
+                        },
+                    ],
+                    llm = new16kModel)
+    print(str(test).split("<|im_start|>assistant")[-1])
+
+# set prompt that you want to test
 template = guidance('''
 {{#system~}}
 You're Iris, the AI programming tutor integrated into Artemis, the online learning platform of the Technical University of Munich (TUM).
@@ -396,33 +423,6 @@ You are not permitted to implement or correct any functionality for the student 
 {{~/assistant}}
 ''')
 
-def testrun(n, query, requirements):
-    # Run the test
-    print()
-    print("############# Test ",n, " #############")
-    print("Question ", n,": ", query)
-    print("What to look for: ", requirements)
-    print()
-    print("The answer:")
-
-    test = template(title = "Binaere Suche",
-                    description = task_description,
-                    files = files,
-                    history = [
-                        {
-                            "role": "assistant",
-                            "content": "Hi there, I'm Iris! How can I help you today?"
-                        },
-                        {
-                            "role": "user",
-                            "content": query
-                        },
-                    ],
-                    llm = new16kModel)
-    print(str(test).split("<|im_start|>assistant")[-1])
-
-    
-
 '''TEST 1'''
 # Set variables
 query = "What would an example implementation of Binary Search look like in Java?"
@@ -441,3 +441,16 @@ requirements = """
 """
 # Run the test
 testrun(2, query, requirements)
+
+# TODO add 3 more test cases.
+'''TEST 3'''
+query = ""
+requirements = """"""
+
+'''TEST 4'''
+query = ""
+requirements = """"""
+
+'''TEST 5'''
+query = ""
+requirements = """"""
